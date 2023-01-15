@@ -102,7 +102,7 @@ var upperCasedCharacters = [
 //From '3' to 3.
 
 function getPasswordOptions() {
-let Length = parseInt(
+let length = parseInt(
   prompt ("How many characters would you like your password to contain?")
 )
 alert (length);
@@ -162,8 +162,8 @@ return passwordOptions;
 function getRandom(arr) {
   // The Math.floor() method rounds a number DOWN to the nearest integer.
   // Math.random() returns a random number between 0 (inclusive),  and 1 (exclusive):
-  let randomIndex = Math.floor(Math.random() * arr.length)
-  let randomElement = arr(randomIndex);
+  let randomIndex = Math.floor(Math.random() * arr.length);
+  let randomElement = arr[randomIndex];
 
   return randomElement;
 
@@ -209,7 +209,7 @@ var generated = getRandom(possibleCharacters);
   result.push(generated);
 }
 for (let index = 0; index < guaranteedCharacters.length; index++){
-  result(index) = guaranteedCharacters[index]
+  result[index] = guaranteedCharacters[index]
 }
 console.log(result)
 return result.join ("")
