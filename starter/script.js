@@ -101,15 +101,19 @@ var upperCasedCharacters = [
 //Now the function has removed 3 from the string and converted it to an actual number.
 //From '3' to 3.
 
+// In this case we use parseInt becasue a reply to a prompt is automatically a string, therefore when you type a number it is a string adn then converts it to a number.
 function getPasswordOptions() {
 let length = parseInt(
   prompt ("How many characters would you like your password to contain?")
 )
+// This alerts us what input the user put in.
 alert (length);
 
+// NaN means not a number
 if (isNaN(length) === true){
 alert ("Password length must be provided as a number");
 return;
+// this is saying ' if this information is true then === true therefore the alert comes up
 }
 
 if (length < 10){
@@ -122,15 +126,20 @@ if (length > 64) {
   return;
 }
 
+
+// Confirm means it comes up with a confrim box and the string will come up
 let hasSpecialCharacters = confirm (
   "Click ok to confirm Speacial Characters ")
 
+// Confirm means it comes up with a confrim box and the string will come up
   let hasNumericCharacters = confirm (
     "Click ok to confirm Numeric Characters ")
 
+// Confirm means it comes up with a confrim box and the string will come up
 let hasLowerCasedCharacters = confirm (
    "Click ok to confirm Lower Case Characters ")
 
+// Confirm means it comes up with a confrim box and the string will come up
 let hasUpperCasedCharacters = confirm (
   "Click ok to confirm Upper Case Characters ")
 
@@ -142,6 +151,7 @@ if (hasSpecialCharacters === false &&
     return;
    }
 
+   // this is a object , i made the vairvales above
 let passwordOptions = {
   length: length,
   hasSpecialCharacters : hasSpecialCharacters ,
@@ -152,7 +162,7 @@ let passwordOptions = {
 
 console.log(passwordOptions);
 
-
+// the return function is like getting cookies out the oven, if you dont return the cookies will stay in forever and not be in use.
 return passwordOptions;
   
 
@@ -171,9 +181,12 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
+  // getPasswordOptions is everything just wrote out above^
+  // now we have the getPasswordOptions we will call it options , this will be the output/return of the above.
 let options = getPasswordOptions();
 
 console.log (options);
+// these are empty to show they are an array.
 let result = []
 
 let possibleCharacters = []
@@ -181,7 +194,9 @@ let possibleCharacters = []
 let guaranteedCharacters = []
 
 if (options.hasSpecialCharacters) {
+  // concat mixes 2 arrays toegther to form a new vairbale 
   possibleCharacters = possibleCharacters.concat(specialCharacters); 
+  // this will pick a random character from the special characters.
   guaranteedCharacters.push(getRandom(specialCharacters))
 }
 
@@ -200,14 +215,21 @@ if (options.hasNumericCharacters) {
   guaranteedCharacters.push(getRandom(numericCharacters))
 }
 
+// this shows all of the possible characters that are possible if they are deemed to be true
 console.log(possibleCharacters)
 
+// line 222 is the index for the length i chose at the begininng
 for (let index = 0; index < options.length; index++) {
 var generated = getRandom(possibleCharacters);
 
   console.log(generated);
+  //. push is something being pushed into an array
+  //what is before e.g. ' result' is the array its being pushed into
+  // whats in the brackets e.g. 'generated' thats whats going to be put in the array.
   result.push(generated);
 }
+
+// this is to select at least one character from each of the character groups that the user selected
 for (let index = 0; index < guaranteedCharacters.length; index++){
   result[index] = guaranteedCharacters[index]
 }
